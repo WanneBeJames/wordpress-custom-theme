@@ -23,7 +23,7 @@
 		
 	</div>
 	
-	<div class="col-xs-12 col-sm-8">
+	<div class="col-xs-12 col-sm-4">
  		<?php 
 		
 		if( have_posts() ):

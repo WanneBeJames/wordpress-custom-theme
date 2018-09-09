@@ -11,9 +11,9 @@ get_header(); ?>
 		
 		while( have_posts() ): the_post(); ?>
 			
-			<h1>This is my Static Title</h1>
+			<h1>SteeperThanDeep</h1>
 			
-			<small>Posted on: <?php the_time('F j, Y'); ?> at <?php the_time('g:i a'); ?>, in <?php the_category(); ?></small>
+			
 			
 			<p><?php the_content(); ?></p>
 			
@@ -24,4 +24,4 @@ get_header(); ?>
 	endif;
 			
 	?>
- <?php get_footer(); ?> 
+ <?php get_footer(); ?>
