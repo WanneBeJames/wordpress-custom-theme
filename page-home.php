@@ -1,30 +1,52 @@
 <?php get_header(); ?>
- <div class="row">
-	
-	<div class="col-xs-12">
+
+<div class="row">
 		
 		<?php 
 			
-			$lastBlog = new WP_Query('type=post&posts_per_page=1');
+			$args_cat = array(
+				'include' => '1, 9, 8'
+			);
 			
-			if( $lastBlog->have_posts() ):
+			$categories = get_categories($args_cat);
+			foreach($categories as $category):
 				
-				while( $lastBlog->have_posts() ): $lastBlog->the_post(); ?>
+				$args = array( 
+					'type' => 'post',
+					'posts_per_page' => 1,
+					'category__in' => $category->term_id,
+					'category__not_in' => array( 10 ),
+				);
+				
+				$lastBlog = new WP_Query( $args );
+				
+				if( $lastBlog->have_posts() ):
 					
-					<?php get_template_part('content',get_post_format()); ?>
+					while( $lastBlog->have_posts() ): $lastBlog->the_post(); ?>
+						
+						<div class="col-xs-12 col-sm-4">
+						
+							<?php get_template_part('content','featured'); ?>
+						
+						</div>
+					
+					<?php endwhile;
+					
+				endif;
 				
-				<?php endwhile;
+				wp_reset_postdata();
 				
-			endif;
-			
-			wp_reset_postdata();
+			endforeach;
 		
 		?>
 		
-	</div>
+</div>
+
+<div class="row">
 	
-	<div class="col-xs-12 col-sm-4">
- 		<?php 
+	<div class="col-xs-12 col-sm-8">
+
+		<?php 
 		
 		if( have_posts() ):
 			
@@ -37,6 +59,7 @@
 		endif;
 		
 		//PRINT OTHER 2 POSTS NOT THE FIRST ONE
+/*
 		$args = array(
 			'type' => 'post',
 			'posts_per_page' => 2,
@@ -56,14 +79,16 @@
 		endif;
 		
 		wp_reset_postdata();
+*/
 				
 		?>
 		
-		<hr>
+		<!-- <hr> -->
 		
 		<?php
 			
 		//PRINT ONLY TUTORIALS
+/*
 		$lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=news');
 			
 		if( $lastBlog->have_posts() ):
@@ -77,6 +102,7 @@
 		endif;
 		
 		wp_reset_postdata();
+*/
 				
 		?>
 	
@@ -87,4 +113,5 @@
 	</div>
 	
 </div>
- <?php get_footer(); ?> 
+
+<?php get_footer(); ?>
