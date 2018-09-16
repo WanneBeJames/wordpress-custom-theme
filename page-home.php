@@ -12,7 +12,7 @@
 			<?php 
 			
 				$args_cat = array(
-					'include' => '7, 8, 9'
+					'include' => '6, 8, 15'
 				);
 				
 				$categories = get_categories($args_cat);
