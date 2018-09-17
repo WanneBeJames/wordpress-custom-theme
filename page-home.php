@@ -1,28 +1,87 @@
 <?php get_header(); ?>
 
 <div class="row">
-	
-	<div class="col-xs-12">
 		
-		<?php 
+		<div class="col-xs-12">
+		
+		<div id="awesome-carousel" class="carousel slide" data-ride="carousel">
+		
+		  <!-- Wrapper for slides -->
+		  <div class="carousel-inner" role="listbox">
+			  
+			<?php 
 			
-			$lastBlog = new WP_Query('type=post&posts_per_page=1');
-			
-			if( $lastBlog->have_posts() ):
+				$args_cat = array(
+					'include' => '6, 8, 15'
+				);
 				
-				while( $lastBlog->have_posts() ): $lastBlog->the_post(); ?>
+				$categories = get_categories($args_cat);
+				$count = 0;
+				$bullets = '';
+				foreach($categories as $category):
 					
-					<?php get_template_part('content',get_post_format()); ?>
+					$args = array( 
+						'type' => 'post',
+						'posts_per_page' => 1,
+						'category__in' => $category->term_id,
+						'category__not_in' => array( 1, 7, 9, 16 ),
+					);
+					
+					$lastBlog = new WP_Query( $args ); 
+					
+					if( $lastBlog->have_posts() ):
+						
+						while( $lastBlog->have_posts() ): $lastBlog->the_post(); ?>
+							
+							<div class="item <?php if($count == 0): echo 'active'; endif; ?>">
+						      <?php the_post_thumbnail('full'); ?>
+						      <div class="carousel-caption">
+							      <?php the_title( sprintf('<h1 class="entry-title"><a href="%s">', esc_url( get_permalink() ) ),'</a></h1>' ); ?>
+	
+								  <small><?php the_category(' '); ?></small>
+						      </div>
+						    </div>
+						    
+						    <?php $bullets .= '<li data-target="#awesome-carousel" data-slide-to="'.$count.'" class="'; ?>
+						    <?php if($count == 0): $bullets .='active'; endif; ?>
+						    
+						    <?php  $bullets .= '"></li>'; ?>
+						
+						<?php endwhile;
+						
+					endif;
+					
+					wp_reset_postdata();
 				
-				<?php endwhile;
-				
-			endif;
+				$count++;
+					
+				endforeach;
 			
-			wp_reset_postdata();
+			?>
+			
+			<!-- Indicators -->
+			  <ol class="carousel-indicators">
+			    <?php echo $bullets; ?>
+			  </ol>
+		    
+		  </div>
 		
-		?>
+		  <!-- Controls -->
+		  <a class="left carousel-control" href="#awesome-carousel" role="button" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#awesome-carousel" role="button" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
 		
-	</div>
+		</div>
+		
+</div>
+
+<div class="row">
 	
 	<div class="col-xs-12 col-sm-8">
 
@@ -39,6 +98,7 @@
 		endif;
 		
 		//PRINT OTHER 2 POSTS NOT THE FIRST ONE
+/*
 		$args = array(
 			'type' => 'post',
 			'posts_per_page' => 2,
@@ -58,14 +118,16 @@
 		endif;
 		
 		wp_reset_postdata();
+*/
 				
 		?>
 		
-		<hr>
+		<!-- <hr> -->
 		
 		<?php
 			
 		//PRINT ONLY TUTORIALS
+/*
 		$lastBlog = new WP_Query('type=post&posts_per_page=-1&category_name=news');
 			
 		if( $lastBlog->have_posts() ):
@@ -79,6 +141,7 @@
 		endif;
 		
 		wp_reset_postdata();
+*/
 				
 		?>
 	
