@@ -2,21 +2,21 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>SteeperThanDeep</title>
+		<title>Awesome Theme</title>
 		<?php wp_head(); ?>
 	</head>
 	
 	<?php 
 		
 		if( is_front_page() ):
-			$wannebe_classes = array( 'wannebe-class', 'my-class' );
+			$awesome_classes = array( 'awesome-class', 'my-class' );
 		else:
-			$wannebe_classes = array( 'no-wannebe-class' );
+			$awesome_classes = array( 'no-awesome-class' );
 		endif;
 		
 	?>
 	
-	<body <?php body_class( $wannebe_classes ); ?>>
+	<body <?php body_class( $awesome_classes ); ?>>
 		
 		<div class="container">
 		
@@ -28,13 +28,16 @@
 					  <div class="container-fluid">
 					    <!-- Brand and toggle get grouped for better mobile display -->
 					    <div class="navbar-header">
+
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					        <span class="sr-only">Toggle navigation</span>
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					        <span class="icon-bar"></span>
 					      </button>
-					      <a class="navbar-brand" href="#">Menu</a>
+					      <a class="navbar-brand" href="#">Awesome Theme</a>
 					    </div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<?php 
