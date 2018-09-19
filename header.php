@@ -24,11 +24,10 @@
 				
 				<div class="col-xs-12">
 					
-					<nav class="navbar navbar-default">
-					  <div class="container-fluid">
+					<nav class="navbar navbar-default navbar-fixed-top">
+					  <div class="container">
 					    <!-- Brand and toggle get grouped for better mobile display -->
 					    <div class="navbar-header">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 					      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					        <span class="sr-only">Toggle navigation</span>
 					        <span class="icon-bar"></span>
@@ -51,10 +50,12 @@
 					</nav>
 				
 				</div>
-				
-				<div class="search-form-container">
-					<?php get_search_form(); ?>
-				</div>
+                
+                <div class="col-xs-12">
+                    <div class="search-form-container">
+                        <?php get_search_form(); ?>
+                    </div>
+                </div>
 				
 			</div>
 			
