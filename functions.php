@@ -61,3 +61,4 @@ function awesome_widget_setup() {
 	
 }
 add_action('widgets_init','awesome_widget_setup');
+
