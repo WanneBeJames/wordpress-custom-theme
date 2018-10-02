@@ -1,9 +1,9 @@
 body { margin-top: 50px; }
 
-.carousel { background: #000; }
-.carousel .item { height: 350px; overflow: hidden; }
+.carousel { background: rgb(88, 85, 83); }
+.carousel .item { height: 300px; overflow: hidden; }
 .carousel .item img { width: 100%; height: auto; margin-top: -35%; }
-.carousel-caption a { color: #fff; }
+.carousel-caption a { color: #fff; position: relative; bottom: 67px;}
 
 .blog-element { display: block; height: 200px; overflow: hidden; background-position: center center; background-repeat: no-repeat; background-size: cover; }
 .blog-element a { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.5) }
@@ -32,7 +32,7 @@ line-height: 1;
 -moz-osx-font-smoothing: grayscale;
 content:"\e003";
 font-size: 20px;
-left: 0;
+left: 5;
 top: 50%;
 line-height: 1em;
 margin-top: -0.5em;
