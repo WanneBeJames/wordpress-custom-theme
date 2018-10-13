@@ -7,7 +7,7 @@
 		<div class="row text-center no-margin">
 
 		<?php 
-		//the three following lines of code breaks tagged posts
+		
 		$currentPage = (get_query_var('paged')) ? get_query_var('paged') : 1;
 		$args = array('posts_per_page' => 3, 'paged' => $currentPage);
 		query_posts($args);
@@ -45,7 +45,7 @@
 			</div>
 			
 		<?php endif;
-				//the following line of code along with the three above breaks tagged posts
+				
 				wp_reset_query();
 			
 		?>

@@ -12,7 +12,7 @@
 			<?php 
 			
 				$args_cat = array(
-					'include' => '6, 8, 15'
+					'include' => '1, 9, 8'
 				);
 				
 				$categories = get_categories($args_cat);
@@ -24,7 +24,7 @@
 						'type' => 'post',
 						'posts_per_page' => 1,
 						'category__in' => $category->term_id,
-						'category__not_in' => array( 1, 7, 9, 16 ),
+						'category__not_in' => array( 10 ),
 					);
 					
 					$lastBlog = new WP_Query( $args ); 
